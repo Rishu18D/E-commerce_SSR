@@ -1,0 +1,32 @@
+<!-- views/home.ejs -->
+<%- include('partials/header') %>
+
+<main>
+    <!-- Buttons for adding product and profile -->
+    <div>
+        <a href="/products/add">Add Product</a>
+        <a href="/users/profile">Profile</a>
+    </div>
+
+    <h2>Welcome to Our E-Commerce Website</h2>
+    <p>Explore our products, place orders</p>
+    
+    <!-- Product Listing -->
+    <h2>Products</h2>
+
+    <% if (products && products.length === 0) { %>
+        <p>No products available.</p>
+    <% } else { %>
+        <ul>
+            <% products.forEach(product => { %>
+                <li>
+                    <h3><%= product.name %></h3>
+                    <p>Price: <%= product.price %> | <a href="/products/<%= product._id %>">Order Product</a></p> <!-- Correct route -->
+                    <p>Description: <%= product.description %></p>
+                </li>
+            <% }); %>
+        </ul>
+    <% } %>
+</main>
+
+<%- include('partials/footer') %>

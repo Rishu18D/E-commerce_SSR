@@ -1,0 +1,11 @@
+<!-- views/orders/index.ejs -->
+<h2>Orders</h2>
+<% if (orders.length === 0) { %>
+    <p>No orders available.</p>
+<% } else { %>
+    <ul>
+        <% orders.forEach(order => { %>
+            <li><a href="/orders/<%= order._id %>">Order #<%= order._id %></a></li>
+        <% }); %>
+    </ul>
+<% } %>

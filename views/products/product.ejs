@@ -1,0 +1,14 @@
+<!-- views/products/product.ejs -->
+<%- include('../partials/header') %>
+    <h2><%= product.name %></h2>
+    <p><strong>Price:</strong> $<%= product.price %></p>
+    <p><strong>Description:</strong> <%= product.description %></p>
+    <!-- Add more product details as needed -->
+
+    <!-- Buy Product button -->
+    <form action="/orders/create" method="post">
+        <input type="hidden" name="productId" value="<%= product._id %>">
+        <button type="submit">Buy Product</button> <!-- Change text to "Buy Product" -->
+    </form>
+    
+<%- include('../partials/footer') %>
