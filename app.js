@@ -1,8 +1,7 @@
-// app.js
-
 const express = require('express');
 const session = require('express-session');
-const mongoose = require('mongoose'); // Ensure Mongoose is imported
+const mongoose = require('mongoose');
+const path = require('path'); // Include the 'path' module for file paths
 const app = express();
 
 // Require database configuration
@@ -10,12 +9,13 @@ require('./config/database');
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public'))); // Use path.join for static file serving
+app.set('views', path.join(__dirname, 'views')); // Set views directory
 app.set('view engine', 'ejs');
 
 // Session configuration
 app.use(session({
-    secret: 'ajaansabthkba', // Replace with a strong secret key
+    secret: process.env.SESSION_SECRET || 'your_secret_here', // Use environment variable or default
     resave: false,
     saveUninitialized: false,
     cookie: { secure: false } // Set to true if using HTTPS
@@ -30,13 +30,18 @@ const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const userRoutes = require('./routes/userRoutes');
-const cartRoutes = require('./routes/cartRoutes'); // Add cartRoutes
+const cartRoutes = require('./routes/cartRoutes');
+const shopRoutes = require('./routes/shopRoutes');
+const salesRoutes = require('./routes/salesRoutes');
 
+// Mount routes
 app.use('/auth', authRoutes);
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
 app.use('/users', userRoutes);
-app.use('/users/cart', cartRoutes); // Use cartRoutes for /users/cart endpoint
+app.use('/users/cart', cartRoutes);
+app.use('/shop', shopRoutes);
+app.use('/sales', salesRoutes);
 
 // Handle POST request for creating an order
 app.post('/products/order', async (req, res) => {
@@ -44,6 +49,11 @@ app.post('/products/order', async (req, res) => {
     const { productId } = req.body;
     // Perform actions like creating an order, updating inventory, etc.
     res.send('Order created successfully');
+});
+
+// Route to render addSales page
+app.get('/sales/add', (req, res) => {
+    res.render('addSales'); // Ensure 'addSales.ejs' is in the views directory
 });
 
 // Home route (Landing page)
@@ -60,10 +70,11 @@ app.get('/home', async (req, res) => {
     if (req.session && req.session.userId) {
         try {
             const products = await require('./models/Product').find();
-            res.render('home', { products });
+            const sales = await require('./models/Sale').find(); // Fetch sales data too if needed
+            res.render('home', { products, sales });
         } catch (error) {
             console.error(error);
-            res.status(500).send("Server Error");
+            res.status(500).send('Server Error');
         }
     } else {
         res.redirect('/auth/login');

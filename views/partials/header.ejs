@@ -8,12 +8,23 @@
     <link rel="stylesheet" href="../../public/css/styles.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .transparent-bg {
+            background-color: rgba(0, 0, 0, 0.5); /* Adjust transparency as needed */
+        }
+        .navbar-link {
+            color: rgb(0, 0, 0); /* Black color for navigation links */
+        }
+    </style>
 </head>
 <body class="bg-gray-100">
-    <header class="bg-blue-600 text-white py-4 shadow-md">
+    <header class="bg-transparent fixed top-0 left-0 right-0 z-50">
         <div class="container mx-auto flex justify-between items-center px-4">
-            <h1 class="text-2xl font-bold">ChicChamber</h1>
+            <h1 class="text-2xl font-bold text-black">ChicChamber</h1>
             <!-- Navigation bar goes here -->
             <%- include('navbar') %>
         </div>
     </header>
+</body>
+</html>
