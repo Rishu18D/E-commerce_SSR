@@ -1,4 +1,5 @@
 // controllers/userController.js
+
 const User = require('../models/User');
 const Order = require('../models/Order');
 
@@ -28,8 +29,8 @@ exports.updateProfile = async (req, res) => {
             return res.redirect('/auth/login');
         }
 
-        const { username, password } = req.body;
-        const user = await User.findByIdAndUpdate(req.session.userId, { username, password }, { new: true });
+        const { username, password, photo } = req.body; // Include photo in req.body
+        const user = await User.findByIdAndUpdate(req.session.userId, { username, password, photo }, { new: true });
 
         if (!user) {
             return res.status(404).send('User not found');

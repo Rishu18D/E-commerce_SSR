@@ -1,18 +1,38 @@
 <!-- views/users/profile.ejs -->
 <%- include('../partials/header') %>
 
-<main>
-    <h2>User Profile</h2>
+<main class="container mx-auto mt-10 px-4">
+    <h2 class="text-2xl font-bold">User Profile</h2>
     <p><strong>Username:</strong> <%= user.username %></p>
     
-    <h3>Order History</h3>
+    <h3 class="text-xl font-semibold mt-6 mb-2">Order History</h3>
     <% if (orders.length === 0) { %>
         <p>No orders found.</p>
     <% } else { %>
-        <ul>
+        <ul class="space-y-4">
             <% orders.forEach(order => { %>
-                <li>Order ID: <%= order._id %> | Status: <%= order.status %></li>
-                <!-- Add more order details as needed -->
+                <% if (order.status !== 'Cancelled') { %> <!-- Filter out cancelled orders -->
+                    <li class="bg-white shadow-md rounded-lg p-4">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <strong>Order ID:</strong> <%= order._id %> | <strong>Status:</strong> <%= order.status %>
+                            </div>
+                            <!-- Cancel Order Button -->
+                            <form action="/orders/<%= order._id %>/cancel" method="POST">
+                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded inline-block">Cancel Order</button>
+                            </form>
+                        </div>
+                        <!-- List products in the order -->
+                        <ul class="mt-2">
+                            <% order.products.forEach(product => { %>
+                                <li class="flex items-center space-x-2">
+                                    <img src="<%= product.image %>" alt="<%= product.name %>" class="w-12 h-auto">
+                                    <span><%= product.name %></span>
+                                </li>
+                            <% }); %>
+                        </ul>
+                    </li>
+                <% } %>
             <% }); %>
         </ul>
     <% } %>

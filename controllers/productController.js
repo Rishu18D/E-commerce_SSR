@@ -16,8 +16,8 @@ exports.getAddProduct = (req, res) => {
 
 exports.postAddProduct = async (req, res) => {
     try {
-        const { name, price, description } = req.body;
-        const newProduct = new Product({ name, price, description });
+        const { name, price, description, image } = req.body; // Include imageUrl in the destructuring
+        const newProduct = new Product({ name, price, description, image });
 
         await newProduct.save();
         res.redirect('/home'); // Redirect to the home page after adding a product
@@ -34,16 +34,22 @@ exports.postAddProduct = async (req, res) => {
 
 exports.getProduct = async (req, res) => {
     try {
-        const product = await Product.findById(req.params.id);
+        const productId = req.params.id;
+        const product = await Product.findById(productId);
+
         if (!product) {
-            return res.status(404).send("Product not found");
+            // Handle case where product is not found
+            return res.status(404).send('Product not found');
         }
+
+        // Render the product view with the fetched product object
         res.render('products/product', { product });
     } catch (error) {
         console.error(error);
-        res.status(500).send("Server Error");
+        res.status(500).send('Server Error');
     }
 };
+
 
 exports.deleteProduct = async (req, res) => {
     try {

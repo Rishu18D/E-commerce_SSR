@@ -1,4 +1,5 @@
 // authController.js
+
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
@@ -8,9 +9,9 @@ exports.getRegister = (req, res) => {
 
 exports.postRegister = async (req, res) => {
     try {
-        const { username, password } = req.body;
+        const { username, password, isSeller } = req.body;
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new User({ username, password: hashedPassword });
+        const newUser = new User({ username, password: hashedPassword, seller: isSeller === 'on' });
         await newUser.save();
         res.redirect('/auth/login');
     } catch (error) {

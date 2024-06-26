@@ -1,0 +1,39 @@
+<!-- views/users/cart.ejs -->
+<%- include('../partials/header') %>
+
+<main class="container mx-auto mt-10 px-4">
+    <h2 class="text-2xl font-bold">Your Shopping</h2>
+    
+    <% if (cart.length === 0) { %>
+        <p>Your cart is empty.</p>
+    <% } else { %>
+        <ul class="space-y-4">
+            <% let totalPrice = 0; %>
+            <% cart.forEach(item => { %>
+                <li class="bg-white shadow-md rounded-lg p-4">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <strong>Product:</strong> <%= item.name %> | <strong>Price:</strong> $<%= item.price %>
+                        </div>
+                        <!-- Remove from Cart Button -->
+                        <form action="/users/cart/<%= item._id %>/remove" method="POST">
+                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded inline-block">Remove</button>
+                        </form>
+                    </div>
+                </li>
+                <% totalPrice += item.price; %>
+            <% }); %>
+        </ul>
+
+        <!-- Display total price -->
+        <p class="text-xl mt-4">Total Price: $<%= totalPrice.toFixed(2) %></p>
+
+        <!-- Order Products Button -->
+        <% if (cart.length > 0) { %>
+            <form action="/products/order" method="POST">
+                <input type="hidden" name="totalPrice" value="<%= totalPrice %>">
+                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-4">Order Products</button>
+            </form>
+        <% } %>
+    <% } %>
+</main>

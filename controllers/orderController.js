@@ -12,7 +12,7 @@ exports.createOrder = async (req, res) => {
 
         const order = new Order({
             user: req.session.userId,
-            products: [product._id],
+            products: [productId], // Store productId directly in products array
             status: 'Completed' // Change status to "Completed" since the product is being bought
         });
 
@@ -47,12 +47,46 @@ exports.getOrder = async (req, res) => {
     }
 };
 
+// controllers/orderController.js
+
 exports.completeOrder = async (req, res) => {
     try {
-        await Order.findByIdAndUpdate(req.params.id, { status: 'Completed' });
-        res.redirect('/orders');
+        const orderId = req.params.id;
+        await Order.findByIdAndUpdate(orderId, { status: 'Cancelled' });
+        res.redirect('/orders'); // Redirect to order history page after cancelling
     } catch (error) {
         console.error('Error completing order:', error);
+        res.status(500).send('Server Error');
+    }
+};
+
+
+exports.cancelOrder = async (req, res) => {
+    try {
+        const orderId = req.params.id;
+        const order = await Order.findById(orderId);
+
+        if (!order) {
+            return res.status(404).send('Order not found');
+        }
+
+        // Check if the order belongs to the current user
+        if (order.user.toString() !== req.session.userId) {
+            return res.status(403).send('Unauthorized');
+        }
+
+        // Check if the order is cancellable (e.g., not already completed)
+        if (order.status === 'Completed') {
+            return res.status(400).send('Cannot cancel a completed order');
+        }
+
+        // Update order status to 'Cancelled'
+        order.status = 'Cancelled';
+        await order.save();
+
+        res.redirect('/users/profile'); // Redirect to profile page after cancellation
+    } catch (error) {
+        console.error('Error cancelling order:', error);
         res.status(500).send('Server Error');
     }
 };

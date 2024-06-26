@@ -5,10 +5,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            color: white;
+        }
+        .logo {
+            width: 150px;
+            height: auto;
+        }
+        .btn-custom {
+            margin: 10px;
+            padding: 10px 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Our E-commerce Site</h1>
-    <p><a href="/auth/register">Register</a></p>
-    <p><a href="/auth/login">Login</a></p>
+    <div class="container">
+        <h1 class="display-4">Welcome to Our E-commerce Site</h1>
+        <p class="lead">Discover amazing products and deals</p>
+        <div>
+            <a href="/auth/register" class="btn btn-primary btn-custom">Register</a>
+            <a href="/auth/login" class="btn btn-secondary btn-custom">Login</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -14,6 +14,10 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    image: { // Add this field to store the image URL
+        type: String,
+        required: true
+    },
     slug: {
         type: String,
         unique: true
