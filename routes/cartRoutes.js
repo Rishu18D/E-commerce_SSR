@@ -4,7 +4,7 @@ const cartController = require('../controllers/cartController');
 const { authMiddleware } = require('../middleware/auth');
 
 router.get('/', authMiddleware, cartController.getCart);
-router.post('/add/:productId', authMiddleware, cartController.addToCart); // Ensure this matches the form action
+router.post('/add/:productId', authMiddleware, cartController.addToCart);
 router.post('/:itemId/remove', authMiddleware, cartController.removeFromCart);
 router.post('/order', authMiddleware, cartController.orderProducts);
 

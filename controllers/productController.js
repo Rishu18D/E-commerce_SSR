@@ -16,7 +16,7 @@ exports.getAddProduct = (req, res) => {
 
 exports.postAddProduct = async (req, res) => {
     try {
-        const { name, price, description, image } = req.body; // Include imageUrl in the destructuring
+        const { name, price, description, image } = req.body; 
         const newProduct = new Product({ name, price, description, image });
 
         await newProduct.save();

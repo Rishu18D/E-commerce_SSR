@@ -1,19 +1,27 @@
-<!-- views/auth/landing.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
+    <!-- Bootstrap CSS for styling and components -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS for background gradient animation and styling -->
     <style>
         body, html {
             height: 100%;
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(-45deg, #4e54c8, #8f94fb, #4e54c8, #8f94fb);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -21,11 +29,6 @@
             100% { background-position: 0% 50%; }
         }
         .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
             text-align: center;
             color: white;
         }
@@ -35,21 +38,87 @@
         }
         .btn-custom {
             margin: 10px;
-            padding: 10px 20px;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .feature {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .feature-item {
+            margin: 20px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .feature-item:hover {
+            transform: translateY(-10px);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #6c63ff;
+        }
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .feature-description {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .logo-icon {
+            font-size: 4rem; /* Increase size to 4rem */
+            color: #ffffff; /* Adjust color if needed */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="display-4">Welcome to Our E-commerce Site</h1>
-        <p class="lead">Discover amazing products and deals</p>
+        <!-- Logo and Heading -->
+        <i class="fas fa-dove logo-icon"></i>
+        <h1 class="display-4 mb-4">Welcome to ChicChamber</h1>
+        <p class="lead mb-4">Discover amazing products and deals</p>
+        
+        <!-- Buttons for Register and Login -->
         <div>
-            <a href="/auth/register" class="btn btn-primary btn-custom">Register</a>
+            <a href="/auth/register" class="btn btn-primary btn-custom mr-3">Register</a>
             <a href="/auth/login" class="btn btn-secondary btn-custom">Login</a>
+        </div>
+        
+        <!-- Features Section -->
+        <div class="feature mt-5">
+            <div class="feature-item">
+                <i class="fas fa-gem feature-icon"></i>
+                <div class="feature-title">Quality Products</div>
+                <div class="feature-description">Explore a collection of high-quality products.</div>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-percent feature-icon"></i>
+                <div class="feature-title">Great Deals</div>
+                <div class="feature-description">Enjoy exclusive deals and discounts.</div>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-shipping-fast feature-icon"></i>
+                <div class="feature-title">Fast Shipping</div>
+                <div class="feature-description">Get fast and reliable shipping options.</div>
+            </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS and dependencies -->
+    <!-- Bootstrap JS and dependencies for functionality -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

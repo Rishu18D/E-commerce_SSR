@@ -1,42 +1,50 @@
 <%- include('../partials/header') %>
 
 <main class="container mx-auto mt-10 px-4">
-    <h2 class="text-2xl font-bold">User Profile</h2>
-    <p><strong>Username:</strong> <%= user.username %></p>
+    <div class="bg-white shadow-md rounded-lg p-6">
+        <h2 class="text-3xl font-bold mb-4">User Profile</h2>
+        <div class="text-lg">
+            <p class="mb-2"><strong>Username:</strong> <%= user.username %></p>
+        </div>
+    </div>
     
-    <h3 class="text-xl font-semibold mt-6 mb-2">Order History</h3>
-    <% if (orders.length === 0) { %>
-        <p>No orders found.</p>
-    <% } else { %>
-        <ul class="space-y-4">
-            <% orders.forEach(order => { %>
-                <% if (order.status !== 'Cancelled') { %> <!-- Filter out cancelled orders -->
-                    <li class="bg-white shadow-md rounded-lg p-4">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <strong>Order ID:</strong> <%= order._id %> | <strong>Status:</strong> <%= order.status %>
+    <div class="bg-white shadow-md rounded-lg mt-10 p-6">
+        <h3 class="text-2xl font-semibold mb-4">Order History</h3>
+        <% if (orders.length === 0) { %>
+            <p class="text-gray-700 text-lg">No orders found.</p>
+        <% } else { %>
+            <ul class="space-y-4">
+                <% orders.forEach(order => { %>
+                    <% if (order.status !== 'Cancelled') { %> <!-- Filter out cancelled orders -->
+                        <li class="bg-gray-100 shadow-inner rounded-lg p-4">
+                            <div class="flex justify-between items-center mb-2">
+                                <div>
+                                    <strong>Order ID:</strong> <%= order._id %> | <strong>Status:</strong> <span class="<%= order.status === 'Shipped' ? 'text-green-500' : order.status === 'Processing' ? 'text-yellow-500' : 'text-blue-500' %>"><%= order.status %></span>
+                                </div>
+                                <% if (['Pending', 'Processing', 'Shipped'].includes(order.status)) { %>
+                                    <!-- Cancel Order Button -->
+                                    <form action="/orders/<%= order._id %>/cancel" method="POST">
+                                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Cancel Order</button>
+                                    </form>
+                                <% } %>
                             </div>
-                            <% if (['Pending', 'Processing', 'Shipped'].includes(order.status)) { %>
-                                <!-- Cancel Order Button -->
-                                <form action="/orders/<%= order._id %>/cancel" method="POST">
-                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded inline-block">Cancel Order</button>
-                                </form>
-                            <% } %>
-                        </div>
-                        <!-- List products in the order -->
-                        <ul class="mt-2">
-                            <% order.products.forEach(product => { %>
-                                <li class="flex items-center space-x-2">
-                                    <img src="<%= product.image %>" alt="<%= product.name %>" class="w-12 h-auto">
-                                    <span><%= product.name %></span>
-                                </li>
-                            <% }); %>
-                        </ul>
-                    </li>
-                <% } %>
-            <% }); %>
-        </ul>
-    <% } %>
+                            <!-- List products in the order -->
+                            <ul class="mt-2 space-y-2">
+                                <% order.products.forEach(product => { %>
+                                    <li class="flex items-center space-x-4">
+                                        <img src="<%= product.image %>" alt="<%= product.name %>" class="w-16 h-16 object-cover rounded-lg">
+                                        <div class="text-gray-700">
+                                            <p class="font-semibold"><%= product.name %></p>
+                                        </div>
+                                    </li>
+                                <% }); %>
+                            </ul>
+                        </li>
+                    <% } %>
+                <% }); %>
+            </ul>
+        <% } %>
+    </div>
 </main>
 
 <%- include('../partials/footer') %>

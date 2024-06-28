@@ -1,7 +1,8 @@
+// app.js
 const express = require('express');
 const session = require('express-session');
 const mongoose = require('mongoose');
-const path = require('path'); // Include the 'path' module for file paths
+const path = require('path'); 
 const app = express();
 
 // Require database configuration
@@ -15,7 +16,7 @@ app.set('view engine', 'ejs');
 
 // Session configuration
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'your_secret_here', // Use environment variable or default
+    secret: process.env.SESSION_SECRET || 'your_secret_here', 
     resave: false,
     saveUninitialized: false,
     cookie: { secure: false } // Set to true if using HTTPS
@@ -33,6 +34,7 @@ const userRoutes = require('./routes/userRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const shopRoutes = require('./routes/shopRoutes');
 const salesRoutes = require('./routes/salesRoutes');
+const infoRoutes = require('./routes/infoRoutes');
 
 // Mount routes
 app.use('/auth', authRoutes);
@@ -42,6 +44,7 @@ app.use('/users', userRoutes);
 app.use('/users/cart', cartRoutes);
 app.use('/shop', shopRoutes);
 app.use('/sales', salesRoutes);
+app.use('/', infoRoutes); 
 
 // Handle POST request for creating an order
 app.post('/products/order', async (req, res) => {
@@ -89,5 +92,5 @@ app.get('/check-session', (req, res) => {
 // Start the server
 const PORT = process.env.PORT || 7000;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Open http://localhost:${PORT} in your browser`);
 });
