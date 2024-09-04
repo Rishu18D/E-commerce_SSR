@@ -1,0 +1,18 @@
+/* public/css/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sticky header styles */
+.header {
+    background-color: #4a5568; /* Adjust background color as needed */
+    padding: 12px 20px;
+}
+
+.container {
+    max-width: 1140px; /* Adjust the maximum width of the container */
+    margin: 0 auto; /* Center align the container */
+}

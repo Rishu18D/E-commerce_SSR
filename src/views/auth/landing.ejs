@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChicChamber - Luxury E-commerce</title>
+    <!-- Tailwind CSS for styling -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- AOS for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <!-- Google Fonts for typography -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a202c, #2d3748);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .btn-custom {
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .feature-item:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        .hero-section {
+            background-color: #2d3748;
+            padding: 4rem 2rem;
+            margin-bottom: 2.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .premium-item:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Hero Section -->
+    <div class="hero-section container mx-auto">
+        <!-- Logo and Heading -->
+        <i class="fas fa-dove text-6xl mb-6 animate__animated animate__fadeIn"></i>
+        <h1 class="text-5xl font-bold mb-4 animate__animated animate__fadeInDown">Welcome to ChicChamber</h1>
+        <p class="text-xl mb-8 animate__animated animate__fadeInUp">Discover amazing products and deals</p>
+        
+        <!-- Buttons for Register and Login -->
+        <div class="mb-8">
+            <a href="/auth/register" class="btn btn-primary btn-custom px-6 py-3 rounded-full bg-gray-600 hover:bg-black-700 mr-3 animate__animated animate__fadeInLeft">Register</a>
+            <a href="/auth/login" class="btn btn-secondary btn-custom px-6 py-3 rounded-full bg-gray-800 hover:bg-gray-900 animate__animated animate__fadeInRight">Login</a>
+        </div>
+    </div>
+    
+    <!-- Features Section -->
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 px-6">
+        <div class="feature-item p-6 rounded-lg bg-white text-gray-800 shadow-lg transform transition duration-300 hover:scale-105" data-aos="fade-up">
+            <i class="fas fa-gem text-4xl mb-4 text-black-600"></i>
+            <div class="feature-title text-xl font-semibold mb-2">Quality Products</div>
+            <div class="feature-description text-sm">Explore a collection of high-quality products.</div>
+        </div>
+        <div class="feature-item p-6 rounded-lg bg-white text-gray-800 shadow-lg transform transition duration-300 hover:scale-105" data-aos="fade-up" data-aos-delay="100">
+            <i class="fas fa-percent text-4xl mb-4 text-black-600"></i>
+            <div class="feature-title text-xl font-semibold mb-2">Great Deals</div>
+            <div class="feature-description text-sm">Enjoy exclusive deals and discounts.</div>
+        </div>
+        <div class="feature-item p-6 rounded-lg bg-white text-gray-800 shadow-lg transform transition duration-300 hover:scale-105" data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-shipping-fast text-4xl mb-4 text-black-600"></i>
+            <div class="feature-title text-xl font-semibold mb-2">Fast Shipping</div>
+            <div class="feature-description text-sm">Get fast and reliable shipping options.</div>
+        </div>
+    </div>
+
+    <!-- Premium Products Section -->
+    <div class="container mx-auto mt-16 px-6">
+        <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Our Premium Collections</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="premium-item p-6 rounded-lg bg-white text-gray-800 shadow-lg transform transition duration-300 hover:scale-105" data-aos="fade-up">
+                <img src="https://i.pinimg.com/736x/89/27/c9/8927c94554ecf55487e29d44e1cc5d27.jpg" alt="Product Image" class="rounded mb-4">
+                <div class="premium-title text-xl font-semibold mb-2">Luxury Watches</div>
+                <div class="premium-description text-sm">Exclusive collection of luxury watches.</div>
+            </div>
+            <div class="premium-item p-6 rounded-lg bg-white text-gray-800 shadow-lg transform transition duration-300 hover:scale-105" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://static.theceomagazine.net/wp-content/uploads/2018/08/29154744/Herme%CC%80s-Chaine-d%E2%80%99Ancre-Bag.jpg" alt="Product Image" class="rounded mb-4">
+                <div class="premium-title text-xl font-semibold mb-2">Designer Handbags</div>
+                <div class="premium-description text-sm">Handpicked designer handbags for you.</div>
+            </div>
+            <div class="premium-item p-6 rounded-lg bg-white text-gray-800 shadow-lg transform transition duration-300 hover:scale-105" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.prestigeonline.com/wp-content/uploads/sites/8/2023/10/05181605/markus-spiske-KP1bubr2j4A-unsplash-scaled-e1696501444859-1573x900.jpg" alt="Product Image" class="rounded mb-4">
+                <div class="premium-title text-xl font-semibold mb-2">Exclusive Jewelry</div>
+                <div class="premium-description text-sm">Sparkling collection of exclusive jewelry.</div>
+            </div>
+        </div>
+    </div>
+
+   <!-- Testimonials Section -->
+<div class="container mx-auto mt-16 px-6">
+    <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">What Our Customers Say</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="testimonial-item p-6 rounded-lg bg-white text-gray-800 shadow-lg" data-aos="fade-up">
+            <p class="text-lg italic mb-4">"ChicChamber offers the best products and deals. Their customer service is exceptional. Highly recommend!"</p>
+            <div class="customer-info flex items-center">
+                <img src="https://image.cnbcfm.com/api/v1/image/106967046-1635430835800-gettyimages-946971500-99821012.jpeg?v=1700237775&w=1920&h=1080" alt="Customer Image" class="rounded-full mr-4 h-12 w-12">
+                <div>
+                    <div class="customer-name text-xl font-semibold">Rishu Singh</div>
+                    <div class="customer-position text-sm">CEO, Luxury Inc.</div>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-item p-6 rounded-lg bg-white text-gray-800 shadow-lg" data-aos="fade-up" data-aos-delay="100">
+            <p class="text-lg italic mb-4">"I love shopping at ChicChamber. Their premium collections are unmatched in quality and style."</p>
+            <div class="customer-info flex items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Elon_Musk_Colorado_2022_%28cropped2%29.jpg/640px-Elon_Musk_Colorado_2022_%28cropped2%29.jpg" alt="Customer Image" class="rounded-full mr-4 h-12 w-12">
+                <div>
+                    <div class="customer-name text-xl font-semibold">Jane Smith</div>
+                    <div class="customer-position text-sm">Fashion Blogger</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Gallery Section -->
+    <div class="container mx-auto mt-16 px-6">
+        <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Gallery</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="gallery-item p-6 rounded-lg bg-white text-gray-800 shadow-lg" data-aos="fade-up">
+                <img src="https://image.cnbcfm.com/api/v1/image/106967046-1635430835800-gettyimages-946971500-99821012.jpeg?v=1700237775&w=1920&h=1080" alt="Gallery Image" class="rounded">
+            </div>
+            <div class="gallery-item p-6 rounded-lg bg-white text-gray-800 shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://www.rollingstone.com/wp-content/uploads/2023/02/elon-twitter-new-ceo.jpg?w=1581&h=1054&crop=1" alt="Gallery Image" class="rounded">
+            </div>
+            <div class="gallery-item p-6 rounded-lg bg-white text-gray-800 shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.moneycontrol.com/static-mcnews/2023/04/jeff-bezos.jpg?impolicy=website&width=770&height=431" alt="Gallery Image" class="rounded">
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="container mx-auto mt-16 px-6">
+        <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Frequently Asked Questions</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="faq-item p-6 rounded-lg bg-white text-gray-800 shadow-lg" data-aos="fade-up">
+                <h3 class="text-xl font-semibold mb-2">What is ChicChamber?</h3>
+                <p class="text-sm">ChicChamber is a luxury e-commerce platform offering high-quality products and exclusive deals.</p>
+            </div>
+            <div class="faq-item p-6 rounded-lg bg-white text-gray-800 shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-xl font-semibold mb-2">How can I place an order?</h3>
+                <p class="text-sm">You can place an order by registering on our website and adding products to your cart.</p>
+            </div>
+            <div class="faq-item p-6 rounded-lg bg-white text-gray-800 shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-xl font-semibold mb-2">What are the payment options?</h3>
+                <p class="text-sm">We accept various payment options including credit cards, PayPal, and bank transfers.</p>
+            </div>
+            <div class="faq-item p-6 rounded-lg bg-white text-gray-800 shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                <h3 class="text-xl font-semibold mb-2">How can I contact customer support?</h3>
+                <p class="text-sm">You can reach our customer support via email at support@chicchamber.com or by phone at +1 234 567 890.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Section -->
+    <div class="container mx-auto mt-16 px-6">
+        <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Latest from Our Blog</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="blog-item p-6 rounded-lg bg-white text-gray-800 shadow-lg" data-aos="fade-up">
+                <img src="https://onecms-res.cloudinary.com/image/upload/s--9k9RwJuS--/f_auto,q_auto/c_fill,g_auto,h_676,w_1200/v1/mediacorp/cna/image/2022/08/05/JayTun_watches.jpeg?itok=e3_3N5iX" alt="Blog Image" class="rounded mb-4">
+                <h3 class="text-xl font-semibold mb-2">Top 10 Luxury Watches of 2024</h3>
+                <p class="text-sm">Discover the top luxury watches of this year, featuring exclusive brands and timeless designs.</p>
+                <a href="#" class="text-black-600 hover:underline mt-4 block">Read More</a>
+            </div>
+            <div class="blog-item p-6 rounded-lg bg-white text-gray-800 shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://i.pinimg.com/originals/28/e9/d7/28e9d7cdee3d8452b2582e3704a5e896.jpg" alt="Blog Image" class="rounded mb-4">
+                <h3 class="text-xl font-semibold mb-2">The Ultimate Guide to Designer Handbags</h3>
+                <p class="text-sm">Explore our ultimate guide to designer handbags, including top picks and style tips.</p>
+                <a href="#" class="text-black-600 hover:underline mt-4 block">Read More</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="container mx-auto mt-16 px-6">
+        <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Get in Touch</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <form class="p-6 rounded-lg bg-white text-gray-800 shadow-lg" data-aos="fade-up">
+                <div class="mb-4">
+                    <label for="name" class="block text-lg font-semibold mb-2">Name</label>
+                    <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded" required>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-lg font-semibold mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded" required>
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block text-lg font-semibold mb-2">Message</label>
+                    <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border rounded" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-custom px-6 py-3 rounded-full bg-gray-600 hover:bg-gray-700 text-black-600">Send Message</button>
+            </form>
+            <div class="contact-info p-6 text-center" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-2xl font-semibold mb-4">Contact Information</h3>
+                <p class="text-lg mb-4"><i class="fas fa-phone-alt mr-2"></i> +1 234 567 890</p>
+                <p class="text-lg mb-4"><i class="fas fa-envelope mr-2"></i> support@chicchamber.com</p>
+                <p class="text-lg mb-4"><i class="fas fa-map-marker-alt mr-2"></i> 123 Luxury Ave, Beverly Hills, CA</p>
+                <div class="social-icons mt-4">
+                    <a href="#" class="text-gray-400 hover:text-white mr-4"><i class="fab fa-facebook fa-2x"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white mr-4"><i class="fab fa-twitter fa-2x"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white mr-4"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin fa-2x"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="container mx-auto text-center">
+            <p class="text-lg">&copy; 2024 ChicChamber. All rights reserved.</p>
+            <div class="mt-4">
+                <a href="#" class="text-gray-400 hover:text-white mr-4">Privacy Policy</a>
+                <a href="#" class="text-gray-400 hover:text-white mr-4">Terms of Service</a>
+                <a href="#" class="text-gray-400 hover:text-white">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200,
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChicChamber</title>
+    <link rel="stylesheet" href="../../public/css/styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Custom styles specific to the header */
+        .logo-icon {
+            color: #000000; /* Adjust the logo color as needed */
+        }
+        /* Fixed position for the header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999; /* Ensure it appears above other content */
+            background-color: transparent; /* Transparent background */
+            box-shadow: none; /* No shadow */
+            width: 100%; /* Full width header */
+            padding: 1rem 0; /* Padding top and bottom */
+        }
+        .header-content {
+            max-width: 1280px; /* Max width of the header content */
+            margin: 0 auto; /* Center align */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo i {
+            font-size: 2rem;
+            margin-right: 0.5rem;
+        }
+        .logo h1 {
+            font-size: 1.5rem;
+            color: #000000; /* Black text */
+            font-weight: bold; /* Bold font weight */
+        }
+        .nav-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .nav-links li {
+            margin-right: 1rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #555555; /* Medium gray text */
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #000000; /* Black text on hover */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-dove logo-icon"></i>
+                <h1 class="text-gray-800">ChicChamber</h1>
+            </div>
+            <!-- Navigation bar goes here -->
+            <%- include('navbar') %>
+        </div>
+    </header>
+</body>
+</html>

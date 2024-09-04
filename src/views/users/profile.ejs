@@ -1,0 +1,71 @@
+<!-- profile.ejs -->
+
+<%- include('../partials/header') %>
+
+<main class="container mx-auto mt-10 px-4">
+    <!-- Hero Section -->
+    <div class="bg-gray-800 text-white py-10 mb-10 rounded-lg shadow-md">
+        <h1 class="text-4xl font-bold text-center">Welcome to Your Profile!</h1>
+        <p class="text-center mt-4">Manage your information and view your order history.</p>
+    </div>
+
+    <!-- User Profile Section -->
+    <div class="bg-white shadow-md rounded-lg p-6 mb-10">
+        <h2 class="text-3xl font-bold mb-4 text-gray-800">User Profile</h2>
+        <div class="text-lg text-gray-700">
+            <p class="mb-2"><strong>Username:</strong> <%= user.username %></p>
+            <button id="edit-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg mt-2">Edit Username</button>
+        </div>
+        <!-- Edit Form -->
+        <form id="edit-form" action="/users/profile" method="POST" class="hidden mt-4">
+            <label for="username" class="block text-gray-700">New Username:</label>
+            <input type="text" name="username" id="username" value="<%= user.username %>" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mt-2">
+            <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg mt-2">Save</button>
+        </form>
+    </div>
+
+    <!-- Order History Section -->
+    <div class="bg-white shadow-md rounded-lg p-6">
+        <h3 class="text-3xl font-semibold mb-4 text-gray-800">Order History</h3>
+        <% if (orders.length === 0) { %>
+            <p class="text-gray-700 text-lg text-center">No orders found.</p>
+        <% } else { %>
+            <ul class="space-y-6">
+                <% orders.forEach(order => { %>
+                    <% if (order.status !== 'Cancelled') { %>
+                        <li class="bg-gray-100 shadow-inner rounded-lg p-4">
+                            <div class="flex justify-between items-center mb-2">
+                                <div>
+                                    <strong>Order ID:</strong> <%= order._id %> | <strong>Status:</strong> <span class="<%= order.status === 'Shipped' ? 'text-green-500' : order.status === 'Processing' ? 'text-yellow-500' : 'text-blue-500' %>"><%= order.status %></span>
+                                </div>
+                                <% if (['Pending', 'Processing', 'Shipped'].includes(order.status)) { %>
+                                    <form action="/orders/<%= order._id %>/cancel" method="POST">
+                                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Cancel Order</button>
+                                    </form>
+                                <% } %>
+                            </div>
+                            <ul class="mt-2 space-y-2">
+                                <% order.products.forEach(product => { %>
+                                    <li class="flex items-center space-x-4">
+                                        <img src="<%= product.image %>" alt="<%= product.name %>" class="w-16 h-16 object-cover rounded-lg">
+                                        <div class="text-gray-700">
+                                            <p class="font-semibold"><%= product.name %></p>
+                                        </div>
+                                    </li>
+                                <% }); %>
+                            </ul>
+                        </li>
+                    <% } %>
+                <% }); %>
+            </ul>
+        <% } %>
+    </div>
+</main>
+
+<%- include('../partials/footer') %>
+
+<script>
+    document.getElementById('edit-button').addEventListener('click', function() {
+        document.getElementById('edit-form').classList.toggle('hidden');
+    });
+</script>

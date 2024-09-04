@@ -1,0 +1,45 @@
+<%- include('../partials/header') %>
+
+<div class="container mx-auto mt-10 px-4">
+    <!-- Hero Section -->
+    <section class="bg-gray-800 text-white py-16 mb-10 rounded-lg shadow-md text-center">
+        <h1 class="text-4xl font-bold mb-4"><%= product.name %> - The Best Product in the World</h1>
+        <p class="text-lg mb-8">Experience unparalleled quality, luxury, and innovation. Make every day extraordinary with <%= product.name %>!</p>
+        <div class="flex justify-center space-x-4">
+            <form action="/orders/summary" method="post">
+                <input type="hidden" name="productId" value="<%= product._id %>">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg inline-block">Buy Now</button>
+            </form>
+            <a href="/shop" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg inline-block">Explore More</a>
+        </div>
+    </section>
+
+    <!-- Product Details Section -->
+    <div class="bg-white rounded-lg shadow-lg">
+        <div class="flex flex-col lg:flex-row">
+            <% if (product) { %>
+                <!-- Product Image -->
+                <div class="w-full lg:w-1/2 p-4">
+                    <img src="<%= product.image %>" alt="<%= product.name %>" class="w-full h-auto rounded-lg shadow-md">
+                </div>
+
+                <!-- Product Details -->
+                <div class="w-full lg:w-1/2 p-4 flex flex-col justify-center">
+                    <h2 class="text-3xl font-bold mb-4"><%= product.name %> - The Best Product in the World</h2>
+                    <p class="text-xl mb-2"><strong>Price:</strong> $<%= product.price %></p>
+                    <p class="text-gray-700 mb-6"><strong>Description:</strong> <%= product.description %></p>
+                    
+                    <!-- Redirect to Order Summary Page -->
+                    <form action="/orders/summary" method="post" class="text-center">
+                        <input type="hidden" name="productId" value="<%= product._id %>">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none">Proceed to Order Summary</button>
+                    </form>
+                </div>
+            <% } else { %>
+                <p>Product not found.</p>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
