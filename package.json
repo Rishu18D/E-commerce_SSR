@@ -2,9 +2,6 @@
   "name": "ChicChmaber",
   "version": "1.0.0",
   "main": "app.js",
-  "engines": {
-    "node": "14.x"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/app.js",
@@ -23,7 +20,9 @@
     "express-session": "^1.18.0",
     "method-override": "^3.0.0",
     "mongoose": "^8.4.1",
-    "nodemon": "^3.1.3",
     "slugify": "^1.6.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }
